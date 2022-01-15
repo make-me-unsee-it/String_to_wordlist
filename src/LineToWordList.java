@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 public class LineToWordList {
     private final String desiredResult;
 
-    LineToWordList() {
+    LineToWordList() throws CyrillicInputException{
         String entry = Scn.scanNoCyr();
         String[] wordsCanBeRepeated = validateAndSplitLine(entry.toLowerCase(Locale.ROOT));
         ArrayList<String> uniqueWords = specialSort(wordsCanBeRepeated);
