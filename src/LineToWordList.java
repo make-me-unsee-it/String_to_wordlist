@@ -7,7 +7,7 @@ public class LineToWordList {
 
     LineToWordList() throws CyrillicInputException{
         String entry = Scn.scanNoCyr();
-        String[] wordsCanBeRepeated = validateAndSplitLine(entry.toLowerCase(Locale.ROOT));
+        String[] wordsCanBeRepeated = validateAndSplitLine(entry);
         ArrayList<String> uniqueWords = specialSort(wordsCanBeRepeated);
         Map<String, Integer> result = calculateDuplicates(uniqueWords);
         desiredResult = output(result);
@@ -24,7 +24,7 @@ public class LineToWordList {
         return desiredResult;
     }
 
-    private String[] validateAndSplitLine (String userLine) {
+    protected String[] validateAndSplitLine (String userLine) {
         // step 1: remove needless (symbols except 'a-z' and ' ')
         Pattern p = Pattern.compile("[a-z ]");
         Matcher m = p.matcher(userLine);
@@ -37,7 +37,7 @@ public class LineToWordList {
         return p2.split(clearUserLine);
     }
 
-    private ArrayList<String> specialSort (String[] wordsCanBeRepeated) {
+    protected ArrayList<String> specialSort (String[] wordsCanBeRepeated) {
     // step 3: sort abc & cleaning
     ArrayList<String> uniqueWords = new ArrayList<>();
         Collections.addAll(uniqueWords, wordsCanBeRepeated);
@@ -47,7 +47,7 @@ public class LineToWordList {
         return uniqueWords;
     }
 
-    private Map<String, Integer> calculateDuplicates (ArrayList<String> uniqueWords) {
+    protected Map<String, Integer> calculateDuplicates (ArrayList<String> uniqueWords) {
         // step 4: calculate duplicates with "TreeMap"
         Map<String, Integer> result = new TreeMap<>();
         for (String current : uniqueWords) {
@@ -57,7 +57,7 @@ public class LineToWordList {
         return result;
     }
 
-    private String output(Map<String, Integer> result) {
+    protected String output(Map<String, Integer> result) {
         // step 5: output
         StringBuilder output = new StringBuilder();
         char currentFirstLetter = ' ';
