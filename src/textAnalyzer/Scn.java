@@ -1,3 +1,5 @@
+package textAnalyzer;
+
 import java.util.Scanner;
 
 public class Scn {

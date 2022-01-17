@@ -1,30 +1,30 @@
+package textAnalyzer;
+
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class LineToWordList {
-    private final String desiredResult;
 
-    LineToWordList() throws CyrillicInputException{
+    public LineToWordList() {
+    }
+
+    public String countTheWords() throws CyrillicInputException {
         String entry = Scn.scanNoCyr();
         String[] wordsCanBeRepeated = validateAndSplitLine(entry);
         ArrayList<String> uniqueWords = specialSort(wordsCanBeRepeated);
         Map<String, Integer> result = calculateDuplicates(uniqueWords);
-        desiredResult = output(result);
+        return output(result);
     }
 
-    LineToWordList(String entry) {
+    public String countTheWords(String entry) throws CyrillicInputException {
         String[] wordsCanBeRepeated = validateAndSplitLine(entry.toLowerCase(Locale.ROOT));
         ArrayList<String> uniqueWords = specialSort(wordsCanBeRepeated);
         Map<String, Integer> result = calculateDuplicates(uniqueWords);
-        desiredResult = output(result);
+        return output(result);
     }
 
-    public String getDesiredResult() {
-        return desiredResult;
-    }
-
-    protected String[] validateAndSplitLine (String userLine) {
+    protected String[] validateAndSplitLine(String userLine) {
         // step 1: remove needless (symbols except 'a-z' and ' ')
         Pattern p = Pattern.compile("[a-z ]");
         Matcher m = p.matcher(userLine);
@@ -37,17 +37,17 @@ public class LineToWordList {
         return p2.split(clearUserLine);
     }
 
-    protected ArrayList<String> specialSort (String[] wordsCanBeRepeated) {
-    // step 3: sort abc & cleaning
-    ArrayList<String> uniqueWords = new ArrayList<>();
+    protected ArrayList<String> specialSort(String[] wordsCanBeRepeated) {
+        // step 3: sort abc & cleaning
+        ArrayList<String> uniqueWords = new ArrayList<>();
         Collections.addAll(uniqueWords, wordsCanBeRepeated);
         Collections.sort(uniqueWords);
-    // step 3-1: remove empty cells
+        // step 3-1: remove empty cells
         uniqueWords.removeAll(Arrays.asList("", null));
         return uniqueWords;
     }
 
-    protected Map<String, Integer> calculateDuplicates (ArrayList<String> uniqueWords) {
+    protected Map<String, Integer> calculateDuplicates(ArrayList<String> uniqueWords) {
         // step 4: calculate duplicates with "TreeMap"
         Map<String, Integer> result = new TreeMap<>();
         for (String current : uniqueWords) {
@@ -71,22 +71,4 @@ public class LineToWordList {
         return output.toString();
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof LineToWordList that)) return false;
-        return desiredResult.equals(that.desiredResult);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(desiredResult);
-    }
-
-    @Override
-    public String toString() {
-        return "LineToWordList{" +
-                "desiredResult='" + desiredResult + '\'' +
-                '}';
-    }
 }
