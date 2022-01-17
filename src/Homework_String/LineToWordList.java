@@ -1,4 +1,4 @@
-package textAnalyzer;
+package Homework_String;
 
 import java.util.*;
 import java.util.regex.Matcher;
@@ -17,7 +17,7 @@ public class LineToWordList {
         return output(result);
     }
 
-    public String countTheWords(String entry) throws CyrillicInputException {
+    public String countTheWords(String entry) {
         String[] wordsCanBeRepeated = validateAndSplitLine(entry.toLowerCase(Locale.ROOT));
         ArrayList<String> uniqueWords = specialSort(wordsCanBeRepeated);
         Map<String, Integer> result = calculateDuplicates(uniqueWords);
@@ -68,6 +68,8 @@ public class LineToWordList {
             }
             output.append("\t").append(word.getKey()).append(" ").append(word.getValue()).append("\n");
         }
+        output.setLength(output.length() - 1);
+        //output.deleteCharAt(output.lastIndexOf("\n"));
         return output.toString();
     }
 
