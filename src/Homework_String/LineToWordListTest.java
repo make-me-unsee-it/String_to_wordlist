@@ -13,12 +13,12 @@ public class LineToWordListTest {
     @Before
     public void setUp() {
         testedObject = new LineToWordList();
-        testedLine = "The Append (UInt16) method modifies the existing instance of this class; it does not return a" +
-                "new class instance. Because of this, you can call a method or property on the existing reference" +
-                "and you do not have to assign the return value to a StringBuilder object, as the following example" +
+        testedLine = "The Append (UInt16) method modifies the existing instance of this class; it does not return a " +
+                "new class instance. Because of this, you can call a method or property on the existing reference " +
+                "and you do not have to assign the return value to a StringBuilder object, as the following example " +
                 "illustrates.";
-        actual = "A:\ta 2\n" +
-                "\tanew 1\n" +
+        actual = "A:\ta 3\n" +
+                "\tand 1\n" +
                 "\tappend 1\n" +
                 "\tas 1\n" +
                 "\tassign 1\n" +
@@ -28,21 +28,23 @@ public class LineToWordListTest {
                 "\tclass 2\n" +
                 "D:\tdo 1\n" +
                 "\tdoes 1\n" +
-                "E:\texampleillustrates 1\n" +
+                "E:\texample 1\n" +
                 "\texisting 2\n" +
                 "F:\tfollowing 1\n" +
                 "H:\thave 1\n" +
-                "I:\tinstance 2\n" +
+                "I:\tillustrates 1\n" +
+                "\tinstance 2\n" +
                 "\tit 1\n" +
                 "M:\tmethod 2\n" +
                 "\tmodifies 1\n" +
-                "N:\tnot 2\n" +
+                "N:\tnew 1\n" +
+                "\tnot 2\n" +
                 "O:\tobject 1\n" +
                 "\tof 2\n" +
                 "\ton 1\n" +
                 "\tor 1\n" +
                 "P:\tproperty 1\n" +
-                "R:\treferenceand 1\n" +
+                "R:\treference 1\n" +
                 "\treturn 2\n" +
                 "S:\tstringbuilder 1\n" +
                 "T:\tthe 5\n" +
