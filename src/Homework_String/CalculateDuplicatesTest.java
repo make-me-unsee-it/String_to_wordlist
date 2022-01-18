@@ -54,7 +54,7 @@ public class CalculateDuplicatesTest {
     }
 
     @Test
-    public void TestCalculateDuplicates() {
+    public void testCalculateDuplicates() {
         Map<String, Integer> expected = testedObject.calculateDuplicates(testCollection);
         Assert.assertEquals(expected, actual);
     }

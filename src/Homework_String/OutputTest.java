@@ -48,7 +48,7 @@ public class OutputTest {
     }
 
     @Test
-    public void TestOutput() {
+    public void testOutput() {
        String expected = testedObject.output(testMap);
         Assert.assertEquals(expected, actual);
     }

@@ -38,7 +38,7 @@ public class SpecialSortTest {
     }
 
     @Test
-    public void TestSpecialSort() {
+    public void testSpecialSort() {
         ArrayList<String> expected = testedObject.specialSort(testArray);
         Assert.assertEquals(expected, actual);
     }

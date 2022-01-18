@@ -26,7 +26,7 @@ public class ValidateAndSplitLineTest {
     }
 
     @Test
-    public void TestValidateAndSplitLine() {
+    public void testValidateAndSplitLine() {
         String[] expected = testedObject.validateAndSplitLine(testLine);
         Assert.assertArrayEquals(expected, actual);
     }

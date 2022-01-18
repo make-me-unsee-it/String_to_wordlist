@@ -61,7 +61,7 @@ public class LineToWordListTest {
     }
 
     @Test
-    public void TestCountTheWords() {
+    public void testCountTheWords() {
         String expected = testedObject.countTheWords(testedLine);
         Assert.assertEquals(expected, actual);
     }
