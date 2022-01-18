@@ -21,7 +21,7 @@ public class LineToWordList {
         return output(result);
     }
 
-    protected String[] validateAndSplitLine(String userLine) {
+    private String[] validateAndSplitLine(String userLine) {
         Pattern p = Pattern.compile("[a-z ]");
         Matcher m = p.matcher(userLine);
         StringBuilder clearUserLine = new StringBuilder();
@@ -32,7 +32,7 @@ public class LineToWordList {
         return p2.split(clearUserLine);
     }
 
-    protected ArrayList<String> specialSort(String[] wordsCanBeRepeated) {
+    private ArrayList<String> specialSort(String[] wordsCanBeRepeated) {
         ArrayList<String> uniqueWords = new ArrayList<>();
         Collections.addAll(uniqueWords, wordsCanBeRepeated);
         Collections.sort(uniqueWords);
@@ -40,7 +40,7 @@ public class LineToWordList {
         return uniqueWords;
     }
 
-    protected Map<String, Integer> calculateDuplicates(ArrayList<String> uniqueWords) {
+    private Map<String, Integer> calculateDuplicates(ArrayList<String> uniqueWords) {
         Map<String, Integer> result = new TreeMap<>();
         for (String current : uniqueWords) {
             if (!result.containsKey(current)) result.put(current, 1);
@@ -49,7 +49,7 @@ public class LineToWordList {
         return result;
     }
 
-    protected String output(Map<String, Integer> result) {
+    private String output(Map<String, Integer> result) {
         StringBuilder output = new StringBuilder();
         char currentFirstLetter = ' ';
         for (Map.Entry<String, Integer> word : result.entrySet()) {
